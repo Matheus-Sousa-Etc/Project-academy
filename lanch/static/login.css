@@ -1,8 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 body{
     display: flex;
     justify-content: center;
@@ -11,11 +7,12 @@ body{
 }
 .conteiner{
     background-color: transparent;
-    border: 2px solid rgb(255, 255, 255, .2);
+    border: 2px solid rgba(29, 25, 25, 0.2);
     border-radius: 10px;
-    color: #000000;
+    color: #ffffff;
     padding: 30px 40px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    backdrop-filter: blur(3px);
 }
 .conteiner h1{
     font-size: 36px;
@@ -31,27 +28,43 @@ body{
 .inputs input{
     color: #000000;
     font-size: 16px;
-    background-color: transparent;
+    background-color: #fff;
     border: 2px solid;
     border-radius: 40px;
     outline: none;
     padding: 10px 40px 10px 10px;
 }
 .inputs input::placeholder{
-    color: #0000002c;
+    color: #8b8787;
 }
 .bt-login button{
     width: 100%;
     height: 50px;
-    background-color: #000000;
-    border: 2px solid;
+    background-color: #ffffff;
+    border: none;
     border-radius: 40px;
     cursor: pointer;
     font-size: 16px;
-    color: rgba(255, 123, 0, 0.993);
+    color: #000000;
+    box-shadow:0 0 10px rgba(0, 0, 0, .1);
+    margin-bottom: 10px;
 }
 .bt-login button:hover{
     background-color: transparent;
     border: 2px solid rgb(255, 255, 255, .2);
-    color: #500000;
+    color: #fff;
+    transition: 0.5s;
+}
+.cadasto{
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.cadastro a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+.cadastro a:hover{
+    text-decoration: underline;
 }
