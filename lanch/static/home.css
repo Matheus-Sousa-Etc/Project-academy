@@ -28,7 +28,6 @@ nav {
     letter-spacing: 3px;
     margin-left: 32px;
 }
-
 .conteiner{
     display: flex;
     justify-content: center;
@@ -36,6 +35,12 @@ nav {
     background-color: transparent;
     color: #fff;
     padding: 30px 40px;
+    transition: 0.3s;
+}
+.aulas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 form{
     width: 100%;
@@ -58,4 +63,29 @@ form{
     font-size: 36px;
     text-align: center;
     margin:5px 0 10px 0;
+}
+.blocos li{ 
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    list-style: none;
+    align-items: center;
+    margin: 20px 0 20px 0;
+}
+.aulas{
+    display: none;
+}
+.blocos:hover .aulas{
+    display: flex;
+}
+.blocos:hover{
+    animation: blocosAnime 0.5s ease-in forwards;
+}
+@keyframes blocosAnime {
+    0%{
+        height: 60px;
+    }   
+    100%{
+        height: 400px;
+    } 
 }
