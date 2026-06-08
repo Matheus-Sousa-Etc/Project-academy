@@ -14,10 +14,11 @@
     <main class="conteiner">
         <form action="{% url 'lanch:cadastro' %}" method="POST">
             {% csrf_token %} <!--se nao colocar isso o django nao vai querer funcionar/enviar as infos pro bd :)-->
+                            <!-- é o bagulho de segurança, não é? Tem que ser seguro, vai que o professor tenta invadir e tira ponto nosso '-' -->
             
             <h1>Cadastro</h1>
             <div class="inputs">
-                <input placeholder="Nome de Usuário" type="email" name="email">
+                <input placeholder="Email" type="email" name="email">
             </div>
             <div class="inputs">
                 <input placeholder="Senha" type="password" name="senha">
@@ -38,7 +39,7 @@
                 <button type="submit">Cadastre-se</button>
             </div>
             <div class="cadastro">
-                <p>Já tem uma conta? <a href="{%url 'lanch:login'%}">Login</a></p>
+                <p>Já tem uma conta? <a href="{%url 'lanch:login' %}">Login</a></p>
             </div>
         </form>
     </main>

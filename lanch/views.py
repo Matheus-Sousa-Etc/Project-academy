@@ -46,4 +46,18 @@ def cadastro_html(request):
         
 
         return redirect ('lanch:home')
-       
+
+def admin_html(request):
+    return render(request, 'home/admin.html')
+
+def musculo_html(request):
+    return render(request, 'aulas/musculo.html')
+
+def crossfit_html(request):
+    return render(request, 'aulas/crossfit.html')
+
+def lanches_html(request):
+    return render(request, 'lanchonete/lanches.html')
+
+def bebidas_html(request):
+    return render(request, 'lanchonete/bebidas.html')
