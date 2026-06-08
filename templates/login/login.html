@@ -12,13 +12,14 @@
 </head>
 <body>
     <main class="conteiner">
-        <form action="" method="post">
+        <form action="{% url 'lanch:login' %}" method="POST">
+            {% csrf_token %}
             <h1>Login</h1>
             <div class="inputs">
-                <input placeholder="Usuário" type="email">
+                <input placeholder="Usuário" type="email" name="email">
             </div>
             <div class="inputs">
-                <input placeholder="Senha" type="password">
+                <input placeholder="Senha" type="password" name="senha">
             </div>
             <div class="bt-login">
                 <button type="submit">Logar</button>

@@ -12,25 +12,27 @@
 </head>
 <body>
     <main class="conteiner">
-        <form action="" method="post">
+        <form action="{% url 'lanch:cadastro' %}" method="POST">
+            {% csrf_token %} <!--se nao colocar isso o django nao vai querer funcionar/enviar as infos pro bd :)-->
+            
             <h1>Cadastro</h1>
             <div class="inputs">
-                <input placeholder="Nome de Usuário" type="email">
+                <input placeholder="Nome de Usuário" type="email" name="email">
             </div>
             <div class="inputs">
-                <input placeholder="Senha" type="password">
+                <input placeholder="Senha" type="password" name="senha">
             </div>
             <div class="inputs">
-                <input placeholder="Nome" type="text">
+                <input placeholder="Nome" type="text" name="nome">
             </div>
             <div class="inputs">
-                <input placeholder="Celular" type="tel">
+                <input placeholder="Celular" type="tel" name="numero">
             </div>
              <div class="inputs">
-                <input placeholder="CPF" type="text">
+                <input placeholder="CPF" type="text" name="cpf">
             </div>
              <div class="inputs">
-                <input placeholder="Endereço" type="text">
+                <input placeholder="Endereço" type="text" name="endereco">
             </div>
             <div class="bt-login">
                 <button type="submit">Cadastre-se</button>

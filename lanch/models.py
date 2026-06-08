@@ -4,13 +4,8 @@ from django.db import models
 # Create your models here
 from django.db import models
 
-class User(models.Model):
-  nome = models.CharField(max_length=30)
-  email = models.CharField(max_length=100)
-  senha = models.CharField(max_length=50)
-  aula = models.IntegerField(max_length=50)
 
-  class admin(models.Model):
+class admin(models.Model):
     nome = models.CharField(max_length=30)
     email = models.CharField(max_length=100)
     senha = models.CharField(max_length=50)
@@ -27,3 +22,8 @@ class lanchonete(models.Model):
   estoque = models.CharField(max_length=100)
   faturamento = models.IntegerField(max_length=256)
  
+class User(models.Model):
+  nome = models.CharField(max_length=30)
+  email = models.CharField(max_length=100)
+  senha = models.CharField(max_length=50)
+  aula = models.IntegerField(max_length=50)
