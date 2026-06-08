@@ -1,0 +1,43 @@
+body{
+    min-height: 100vh;
+}
+a{
+    color:#fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+a:hover{
+    opacity: 0.7;
+}
+.container{
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40% 1fr;
+    color: #fff;
+}
+.blocos{
+    border: 2px solid rgb(255, 255, 255, .2);
+    background-color: #3d3d58;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.blocos_3{ /*Bloco de baixo, fiz assim para ele pegar todo o espaço*/
+    grid-column: 1 / -1; /* esse serve para o bloco preencher todo o espaço*/
+    border: 2px solid rgb(255, 255, 255, .2);
+    background-color: #3d3d58;
+    margin: 20px;
+    display: grid; /*alinhamento dentro do bloco*/
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+.blocos h1{
+    display: flex;
+    justify-content: center;
+}
+.blocos_3 h1{
+    display: flex;
+    justify-content: center;
+}
