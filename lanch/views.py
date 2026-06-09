@@ -50,17 +50,10 @@ def home_html(request):
 def admin_html(request):
     return render(request, 'home/admin.html')
 
-# Views das aulas
-def musculo_html(request):
-    return render(request, 'aulas/musculo.html')
+#Views da Loja
+def suplementos_html(request):
+    return render(request, 'loja/suplementos.html')
 
-def crossfit_html(request):
-    return render(request, 'aulas/crossfit.html')
-
-#Views da lanchonete
-def lanches_html(request):
-    return render(request, 'lanchonete/lanches.html')
-
-def bebidas_html(request):
-    return render(request, 'lanchonete/bebidas.html')
+def equipamentos_html(request):
+    return render(request, 'loja/equipamentos.html')
 

@@ -23,26 +23,22 @@
         </ul>
     </nav>
     <main class="conteiner">
-        <form>
-            <div class="blocos">
-                <h1>Aulas</h1>
-                <ul class="aulas">
-                    <li><a href="{% url 'lanch:musculo' %}">Musculação</a></li>
-                    <li><a href="{% url 'lanch:crossfit' %}">Crosfitt</a></li>
-                    <li><a href="#">Pilates</a></li>
-                    <li><a href="#">Zumba</a></li>
-                </ul>
-            </div>
-            <div class="blocos">
-                <h1>Lanchonete</h1>
-                <ul class="aulas">
-                    <li><a href="{% url 'lanch:lanches' %}">Lanches</a></li>
-                    <li><a href="{% url 'lanch:bebidas' %}">Bebidas</a></li>
-                    <li><a href="#">Banjos</a></li>
-                    <li><a href="#">Sucos</a></li>
-                </ul>
-            </div>
-        </form>
+        <div class="blocos">
+            <h1>Aulas</h1>
+            <ul class="aulas">
+                <li><a href="">Musculação</a></li>
+                <li><a href="">Crossfit</a></li>
+                <li><a href="#">Pilates</a></li>
+                <li><a href="#">Jump</a></li>
+            </ul>
+        </div>
+        <div class="blocos">
+            <h1>Lanchonete</h1>
+            <ul class="aulas">
+                <li><a href="{% url 'lanch:suplementos' %}">Suplementos</a></li>
+                <li><a href="{% url 'lanch:equipamentos' %}">Equipamentos</a></li>
+            </ul>
+        </div>
     </main>
 </body>
 </html>
