@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'global.css' %}">
     <link rel="stylesheet" href="{% static 'home.css' %}">
     <link rel="stylesheet" href="{% static 'navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'rodape.css' %}">
+    <link rel="stylesheet" href="{% static 'modal.css' %}">
     <title>Página principal</title>
 </head>
 <body>
@@ -17,19 +17,18 @@
         <a class="logo" href="{% url 'lanch:home' %}">Academia</a>
         <ul class="menu-list">
             <li><a href="#"><i class="fa-solid fa-circle-user fa-2x"></i></a></li>
-            <li><a href="{% url 'lanch:admin' %}"><i class="fa-solid fa-user-gear fa-2x"></i></a></li>
             <li><a href="#"><i class="fa-solid fa-envelope fa-2x"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-cart-shopping fa-2x"></i></a></li>
+            <li><a href="{% url 'lanch:carrinho' %}"><i class="fa-solid fa-cart-shopping fa-2x"></i></a></li>
         </ul>
     </nav>
     <main class="conteiner">
         <div class="blocos">
             <h1>Aulas</h1>
             <ul class="aulas">
-                <li><a href="">Musculação</a></li>
-                <li><a href="">Crossfit</a></li>
-                <li><a href="#">Pilates</a></li>
-                <li><a href="#">Jump</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal1()">Musculação</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal2()">Crossfit</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal3()">Pilates</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal4()">Jump</a></li>
             </ul>
         </div>
         <div class="blocos">
@@ -40,5 +39,73 @@
             </ul>
         </div>
     </main>
+
+    <!--Bora fazer pop ups do jeito mais porco-->
+    <dialog id="modal1" class="popup">
+        <h2>Musculação</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal1()">Fechar</button>
+        <button class="bt">Confirmar</button>
+    </dialog>
+    <script>
+        function abrirModal1() {
+            document.getElementById('modal1').style.display = 'block';
+        }
+
+        function fecharModal1() {
+            document.getElementById('modal1').style.display = 'none';
+        }
+    </script>
+
+    <!--Segundo modal-->
+    <dialog id="modal2" class="popup">
+        <h2>Crossfit</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal2()">Fechar</button>
+        <button class="bt">Confirmar</button>
+    </dialog>
+    <script>
+        function abrirModal2() {
+            document.getElementById('modal2').style.display = 'block';
+        }
+
+        function fecharModal2() {
+            document.getElementById('modal2').style.display = 'none';
+        }
+    </script>
+
+    <!--Terceiro modal-->
+    <dialog id="modal3" class="popup">
+        <h2>Pilates</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal3()">Fechar</button>
+        <button class="bt">Confirmar</button>
+    </dialog>
+    <script>
+        function abrirModal3() {
+            document.getElementById('modal3').style.display = 'block';
+        }
+
+        function fecharModal3() {
+            document.getElementById('modal3').style.display = 'none';
+        }
+    </script>
+
+    <!--Quarto modal-->
+    <dialog id="modal4" class="popup">
+        <h2>Jump</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal4()">Fechar</button>
+        <button class="bt">Confirmar</button>
+    </dialog>
+    <script>
+        function abrirModal4() {
+            document.getElementById('modal4').style.display = 'block';
+        }
+
+        function fecharModal4() {
+            document.getElementById('modal4').style.display = 'none';
+        }
+    </script>
 </body>
 </html>

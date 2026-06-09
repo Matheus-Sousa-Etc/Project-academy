@@ -1,0 +1,33 @@
+.container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 400px 400px;
+    margin-top: 100px;
+    gap: 60px;
+}
+.blocos{
+    background-color: #4a4a75;
+    display: flex;
+    justify-content:space-between;
+    border: none;
+    border-radius: 20px;
+}
+button{
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #000000;
+    box-shadow:0 0 10px rgba(0, 0, 0, .1);
+    margin: 40px 20px 10px 0;
+}
+button:hover{
+    background-color: transparent;
+    border: 2px solid rgb(255, 255, 255, .2);
+    color: #fff;
+    transition: 0.5s;
+}
+h2{
+    margin: 15px 0 0 40px;
+    font-size: 27px;
+}

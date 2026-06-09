@@ -43,12 +43,34 @@ def cadastro_html(request):
 
         return redirect ('lanch:home')
 
+def login_admin_html(request):
+    if request.method == "GET":
+        return render(request, 'login/login.html')
+    else:
+        #pega as informações do banco de dados para a autenticação
+        username = request.POST.get('email')
+        senha = request.POST.get('senha')
+
+        user = authenticate(username=username, password=senha)#autenticação do usuario usando tag propria do django
+
+        if user:
+            login(request, user)
+            return redirect ('lanch:home') #caso o usuario logue e seja autenticado, vai para a pagina home
+        else:
+            return HttpResponse("erro de login") #erro no login
+
 def home_html(request):
     return render(request, 'home/home.html')
+
+def home_admin_html(request):
+    return render(request, 'home/home-admin.html')
 
 # Views do Menu
 def admin_html(request):
     return render(request, 'home/admin.html')
+
+def carrinho_html(request):
+    return render(request, 'loja/carrinho.html')
 
 #Views da Loja
 def suplementos_html(request):
@@ -56,4 +78,3 @@ def suplementos_html(request):
 
 def equipamentos_html(request):
     return render(request, 'loja/equipamentos.html')
-

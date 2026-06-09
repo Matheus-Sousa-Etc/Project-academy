@@ -14,7 +14,7 @@
     <main class="conteiner">
         <form action="{% url 'lanch:login' %}" method="POST">
             {% csrf_token %}
-            <h1>Login</h1>
+            <h1>Login Adiministrador</h1>
             <div class="inputs">
                 <input placeholder="Email" type="email" name="email">
             </div>
@@ -26,7 +26,6 @@
             </div>
             <div class="cadastro">
                 <p>Ainda não tem uma conta? <a href="{% url 'lanch:cadastro' %}">Cadastre-se</a></p>
-                <p><a href="{% url 'lanch:login-admin' %}">Logar como administrador</a></p>
             </div>
         </form>
     </main>
