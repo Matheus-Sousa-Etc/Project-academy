@@ -21,10 +21,11 @@
         </ul>
     </nav>
     <!--Equipamentos divididos em 4 blocos-->
-    <main class="container">
+    <form action="" method="POST" class="container">
+        {% csrf_token %}
         <div class="blocos">
             <h2>Strap</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <button class="bt" name="bt-equip">Adicionar ao carrinho</button>
         </div>
         <div class="blocos">
             <h2>Luva</h2>
@@ -38,6 +39,6 @@
             <h2>Fones</h2>
             <button class="bt">Adicionar ao carrinho</button>
         </div>
-    </main>
+    </form>
 </body>
 </html>

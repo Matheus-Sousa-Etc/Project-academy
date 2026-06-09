@@ -20,17 +20,15 @@
             <li><a href="{% url 'lanch:carrinho' %}"><i class="fa-solid fa-cart-shopping fa-2x"></i></a></li>
         </ul>
     </nav>
-    <main class="container">
-        <form action="" method="POST">
-            <h1>Carrinho</h1>
-            {{produto}}
+    <form action="" method="POST" class="container">
+        {% csrf_token %}
+        <h1>Carrinho</h1>
+        <div class="bt">
+            <button type="reset">Limpar</button>
+        </div>
             <div class="bt">
-                <button type="reset">Limpar</button>
-            </div>
-             <div class="bt">
-                <button type="submit">Comprar</button>
-            </div>
-        </form>
-    </main>
+            <button type="submit">Comprar</button>
+        </div>
+    </form>
 </body>
 </html>
