@@ -25,7 +25,7 @@
         {% csrf_token %}
         <div class="blocos">
             <h2>Whey</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' whey.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Creatina</h2>

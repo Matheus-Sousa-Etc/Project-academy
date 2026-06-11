@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404 # O get_object_or_404 pega um objeto do banco de dados ou da error 404 caso não ache 
 from django.http import HttpResponse
-from .models import Aulas #Importando a tabela Aulas do banco de dados
+from .models import Aulas, lanchonete #Importando a tabela Aulas do banco de dados
 from django.contrib.auth.models import User # é mais facil usar a model propria do django por conta verificação :)
 from django.contrib.auth import authenticate, login #essa bosta serve pra autenticação do usuário
 # Create your views here.
@@ -61,7 +61,7 @@ def login_admin_html(request):
             return HttpResponse("erro de login") #erro no login
 
 def home_html(request):
-    musculacao = Aulas.objects.get(modalidade='musculação') #Pega o objeto musculação do banco, armazena em modalidade.
+    musculacao = Aulas.objects.get(modalidade='musculação') #Pega o objeto musculação do banco, armazena em musculacao.
     crossfit = Aulas.objects.get(modalidade='crossfit')
     pilates = Aulas.objects.get(modalidade='pilates')
     jump = Aulas.objects.get(modalidade='jump')
@@ -86,7 +86,14 @@ def carrinho_html(request):
 
 #Views da Loja
 def suplementos_html(request):
-    return render(request, 'loja/suplementos.html')
+    whey = lanchonete.objects.get(salgado = 'whey')
+    #creatina = lanchonete.objects.get(salgado = '')
+    #hipercalorico = lanchonete.objects.get(salgado = '')
+    #preTreino = lanchonete.objects.get(salgado = '')
+    context = {
+        'whey': whey
+    }
+    return render(request, 'loja/suplementos.html', context)
 
 def equipamentos_html(request):
     return render(request, 'loja/equipamentos.html')
@@ -94,10 +101,18 @@ def equipamentos_html(request):
 #Pop ups
 def vagas(request, id):
     modalidade = get_object_or_404(Aulas, id=id) # Se o id passado nos parametros for igual ao id que está no banco ele funciona, senao da erro 404
-    if modalidade.vagas > 0: # Se nao tiver vagas não roda
+    if modalidade.vagas > 0: # Se nao tiver vagas vai pra fila
         modalidade.vagas -= 1
         modalidade.save() # Salva a alteração
-        
-
-
+    #else:
+        #fila += 1
     return redirect ('lanch:home')
+
+#Funcionalidades da loja
+def loja(request, id): # Meu Deus 
+    suplemento = get_object_or_404(lanchonete,id=id)
+    if suplemento.estoque > 0:
+        suplemento.estoque -=1
+        suplemento.faturamento += suplemento.preço
+        suplemento.save()
+    return redirect ('lanch:suplementos')
