@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404 # O get_object_or_404 pega um objeto do banco de dados ou da error 404 caso não ache 
 from django.http import HttpResponse
+from .models import Aulas #Importando a tabela Aulas do banco de dados
 from django.contrib.auth.models import User # é mais facil usar a model propria do django por conta verificação :)
 from django.contrib.auth import authenticate, login #essa bosta serve pra autenticação do usuário
 # Create your views here.
@@ -60,7 +61,18 @@ def login_admin_html(request):
             return HttpResponse("erro de login") #erro no login
 
 def home_html(request):
-    return render(request, 'home/home.html')
+    musculacao = Aulas.objects.get(modalidade='musculação') #Pega o objeto musculação do banco, armazena em modalidade.
+    crossfit = Aulas.objects.get(modalidade='crossfit')
+    pilates = Aulas.objects.get(modalidade='pilates')
+    jump = Aulas.objects.get(modalidade='jump')
+    contexto ={
+        'musculacao': musculacao,
+        'crossfit': crossfit,
+        'pilates': pilates,
+        'jump': jump,
+    }
+
+    return render(request, 'home/home.html' ,contexto)
 
 def home_admin_html(request):
     return render(request, 'home/home-admin.html')
@@ -78,3 +90,14 @@ def suplementos_html(request):
 
 def equipamentos_html(request):
     return render(request, 'loja/equipamentos.html')
+
+#Pop ups
+def vagas(request, id):
+    modalidade = get_object_or_404(Aulas, id=id) # Se o id passado nos parametros for igual ao id que está no banco ele funciona, senao da erro 404
+    if modalidade.vagas > 0: # Se nao tiver vagas não roda
+        modalidade.vagas -= 1
+        modalidade.save() # Salva a alteração
+        
+
+
+    return redirect ('lanch:home')
