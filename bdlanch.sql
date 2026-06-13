@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2026 às 04:03
+-- Tempo de geração: 13-Jun-2026 às 20:16
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -101,7 +101,11 @@ INSERT INTO `auth_permission` (`id`, `name`, `content_type_id`, `codename`) VALU
 (37, 'Can add user', 10, 'add_user'),
 (38, 'Can change user', 10, 'change_user'),
 (39, 'Can delete user', 10, 'delete_user'),
-(40, 'Can view user', 10, 'view_user');
+(40, 'Can view user', 10, 'view_user'),
+(41, 'Can add loja', 9, 'add_loja'),
+(42, 'Can change loja', 9, 'change_loja'),
+(43, 'Can delete loja', 9, 'delete_loja'),
+(44, 'Can view loja', 9, 'view_loja');
 
 -- --------------------------------------------------------
 
@@ -137,7 +141,11 @@ INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `userna
 (7, 'pbkdf2_sha256$600000$dorBht1P0aBZ5NcrKYJTdR$ujSRu+GURrssLfy4zsEkVmbZx2YDMRy8OgbB7XwGKfw=', NULL, 0, 'w@gmail.com', '', '', '', 0, 1, '2026-06-08 05:30:14.249718'),
 (8, 'pbkdf2_sha256$600000$oL4UsxkwUCrrUca7CLp5cK$0fbzYItMKptxVx2PeKF54RtTW2HnwNl2qKQ/PizxlzY=', '2026-06-08 05:37:57.034008', 0, 'afonso@gmail.com', '', '', '', 0, 1, '2026-06-08 05:37:25.160791'),
 (9, 'pbkdf2_sha256$600000$FcPmv8kd5w72QdIS5SMDST$u12EK1FLqUm1Gj6262aRFLcb09dws00Imlz26sc2kZY=', NULL, 0, 'hkopt@gmail.com', '', '', '', 0, 1, '2026-06-08 22:17:50.900067'),
-(10, 'pbkdf2_sha256$600000$9IWgEi1y6sKgODDbfQZbUL$AXppUov+yRSTL8FRWVTRKZ/ALiVUnoPvcRKMqAcgA+g=', '2026-06-10 00:18:03.834458', 0, 'qwerty@gmail.com', '', '', '', 0, 1, '2026-06-10 00:17:29.119294');
+(10, 'pbkdf2_sha256$600000$9IWgEi1y6sKgODDbfQZbUL$AXppUov+yRSTL8FRWVTRKZ/ALiVUnoPvcRKMqAcgA+g=', '2026-06-10 00:18:03.834458', 0, 'qwerty@gmail.com', '', '', '', 0, 1, '2026-06-10 00:17:29.119294'),
+(11, 'pbkdf2_sha256$600000$Avf152LFKmILBlM41DX2CW$vVz4gOn/N0ECAwEd0x1oQELrICXWUYGuBRMc7ubYUoE=', NULL, 1, 'super', '', '', '', 1, 1, '2026-06-13 02:11:51.872026'),
+(12, 'pbkdf2_sha256$600000$AixzjPeQwkyZWoKWdwEBme$x5aEmqtN7owk8eqDVrIkhnFgF7Z2SEmjXLse5ZZhj5w=', NULL, 1, 'superadmin', '', '', 'superadmin@gmail.com', 1, 1, '2026-06-13 02:12:44.164870'),
+(13, 'pbkdf2_sha256$600000$6VOOMfF5p4FWfQ6WDj91b6$53oXiV5pdqNMxj/zC8vqZ2M+IBIxeJhfHXowEIMFA/w=', NULL, 1, 'root', '', '', '', 1, 1, '2026-06-13 02:16:03.344324'),
+(14, 'pbkdf2_sha256$600000$sXtRzYfrN0Fv6TLuO5yZ16$VJxosYsUL7eVPEJXn0WD4qVmTz0cjCqRPGYbC8PwtXg=', '2026-06-13 02:36:00.953417', 1, 'admin@gmail.com', '', '', '', 1, 1, '2026-06-13 02:18:05.520212');
 
 -- --------------------------------------------------------
 
@@ -204,7 +212,7 @@ INSERT INTO `django_content_type` (`id`, `app_label`, `model`) VALUES
 (5, 'contenttypes', 'contenttype'),
 (7, 'lanch', 'admin'),
 (8, 'lanch', 'aulas'),
-(9, 'lanch', 'lanchonete'),
+(9, 'lanch', 'loja'),
 (10, 'lanch', 'user'),
 (6, 'sessions', 'session');
 
@@ -245,7 +253,9 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (17, 'auth', '0012_alter_user_first_name_max_length', '2026-06-08 04:29:32.454317'),
 (18, 'lanch', '0001_initial', '2026-06-08 04:29:32.480023'),
 (19, 'sessions', '0001_initial', '2026-06-08 04:29:32.501543'),
-(20, 'lanch', '0002_alter_lanchonete_estoque_alter_lanchonete_preço', '2026-06-13 01:07:08.511974');
+(20, 'lanch', '0002_alter_lanchonete_estoque_alter_lanchonete_preço', '2026-06-13 01:07:08.511974'),
+(21, 'lanch', '0003_aulas_filas', '2026-06-13 18:05:50.781032'),
+(22, 'lanch', '0004_rename_lanchonete_loja_rename_salgado_loja_produtos', '2026-06-13 18:16:07.165289');
 
 -- --------------------------------------------------------
 
@@ -265,7 +275,7 @@ CREATE TABLE `django_session` (
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
 ('98pgefl1z9fwrscru7xrphinswyhad36', 'e30:1wWSVF:mRIKqciyT6zUj_p5KyfCSnlxgJWiZaNpJPJHeV0LeyU', '2026-06-22 05:26:25.276177'),
-('ae6gthm6hd8pzmzfsas12kbv6mau3jyw', '.eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAbB4fILI6ZnboehB7Z7Z6m3bV0iOxJ22sFunfLrerZ_g4qjwgyTICu8IYlaG6O8sbY4r1E4XzxlEZWVXKHjypbideTIk44UjSppcrLA5wvd2DeJ:1wX6dv:ET83iSvTxDzMCllUK3E8wKGW59CFQYFnpCpjqM9Qa8Q', '2026-06-24 00:18:03.854323');
+('sbpbg54sqz3qbswqumat4it4khveopuo', '.eJxVjEEOwiAQAP-yZ0NgoUh79N43EJbd2qqBpLQn499Nkx70OjOZN8S0b3Pcm6xxYRjAOLj8Qkr5KeUw_EjlXlWuZVsXUkeiTtvUWFlet7P9G8ypzTCA9WHqQ0DXYS8diQ4ePevJGiYUtmiuwoYYvXgMXgfbCRMmp6eEfbbw-QLs2jen:1wYEE4:jgR07pcXCDz7pBvlT9C2ZaZIqk31Pepdj1CrnU1tTwk', '2026-06-27 02:36:00.956300');
 
 -- --------------------------------------------------------
 
@@ -290,28 +300,29 @@ CREATE TABLE `lanch_admin` (
 CREATE TABLE `lanch_aulas` (
   `id` int(11) NOT NULL,
   `modalidade` varchar(30) NOT NULL,
-  `vagas` int(11) NOT NULL
+  `vagas` int(11) NOT NULL,
+  `filas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Extraindo dados da tabela `lanch_aulas`
 --
 
-INSERT INTO `lanch_aulas` (`id`, `modalidade`, `vagas`) VALUES
-(1, 'musculação', 15),
-(2, 'crossfit', 15),
-(3, 'pilates', 15),
-(4, 'jump', 15);
+INSERT INTO `lanch_aulas` (`id`, `modalidade`, `vagas`, `filas`) VALUES
+(1, 'musculação', 14, 0),
+(2, 'crossfit', 15, 0),
+(3, 'pilates', 15, 0),
+(4, 'jump', 15, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `lanch_lanchonete`
+-- Estrutura da tabela `lanch_loja`
 --
 
-CREATE TABLE `lanch_lanchonete` (
+CREATE TABLE `lanch_loja` (
   `id` int(11) NOT NULL,
-  `salgado` varchar(15) NOT NULL,
+  `produtos` varchar(15) NOT NULL,
   `preço` int(11) NOT NULL,
   `estoque` int(11) NOT NULL,
   `faturamento` int(11) NOT NULL
@@ -421,9 +432,9 @@ ALTER TABLE `lanch_aulas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `lanch_lanchonete`
+-- Índices para tabela `lanch_loja`
 --
-ALTER TABLE `lanch_lanchonete`
+ALTER TABLE `lanch_loja`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -452,13 +463,13 @@ ALTER TABLE `auth_group_permissions`
 -- AUTO_INCREMENT de tabela `auth_permission`
 --
 ALTER TABLE `auth_permission`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user_groups`
@@ -488,7 +499,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT de tabela `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de tabela `lanch_admin`
@@ -503,9 +514,9 @@ ALTER TABLE `lanch_aulas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de tabela `lanch_lanchonete`
+-- AUTO_INCREMENT de tabela `lanch_loja`
 --
-ALTER TABLE `lanch_lanchonete`
+ALTER TABLE `lanch_loja`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

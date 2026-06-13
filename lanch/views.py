@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404 # O get_object_or_404 pega um objeto do banco de dados ou da error 404 caso não ache 
 from django.http import HttpResponse
-from .models import Aulas, lanchonete #Importando a tabela Aulas do banco de dados
+from .models import Aulas, loja #Importando a tabela Aulas do banco de dados
 from django.contrib.auth.models import User # é mais facil usar a model propria do django por conta verificação :)
 from django.contrib.auth import authenticate, login #essa bosta serve pra autenticação do usuário
 # Create your views here.
@@ -56,7 +56,7 @@ def login_admin_html(request):
         
         if user and user.is_superuser:
             login(request, user)
-            return redirect ('lanch:home-admin') #caso o usuario logue e seja autenticado, vai para a pagina home
+            return redirect ('lanch:home-admin') #caso o usuario logue e seja autenticado como um admin,  vai para a pagina home do admin
         else:
             return HttpResponse("erro de login, apenas adm possuem acesso") #erro no login
 
