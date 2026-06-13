@@ -26,10 +26,10 @@
         <div class="blocos">
             <h1>Aulas</h1>
             <ul class="aulas">
-                <li><a href="javascript:void(0)" onclick="abrirModal()">Musculação</a></li>
-                <li><a href="">Crossfit</a></li>
-                <li><a href="#">Pilates</a></li>
-                <li><a href="#">Jump</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal1()">Musculação</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal2()">Crossfit</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal3()">Pilates</a></li>
+                <li><a href="javascript:void(0)" onclick="abrirModal4()">Jump</a></li>
             </ul>
         </div>
         <div class="blocos">
@@ -40,18 +40,71 @@
             </ul>
         </div>
     </main>
+    <!--Bora fazer pop ups do jeito mais porco-->
     <dialog id="modal1" class="popup">
         <h2>Musculação</h2>
-        <button class="bt" onclick="fecharModal()">Fechar</button>
-        <button class="bt">Confirmar</button>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal1()">Fechar</button>
+        <a href="{% url 'lanch:vagas' musculacao.id %}"><button type="submit" class="bt" onclick="alert('Aula confirmada')">Confirmar</button></a>
     </dialog>
     <script>
-        function abrirModal() {
+        function abrirModal1() {
             document.getElementById('modal1').style.display = 'block';
         }
 
-        function fecharModal() {
+        function fecharModal1() {
             document.getElementById('modal1').style.display = 'none';
+        }
+    </script>
+
+    <!--Segundo modal-->
+    <dialog id="modal2" class="popup">
+        <h2>Crossfit</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal2()">Fechar</button>
+        <a href="{% url 'lanch:vagas' crossfit.id %}"><button type="submit" class="bt" onclick="alert('Aula confirmada')">Confirmar</button></a>
+    </dialog>
+    <script>
+        function abrirModal2() {
+            document.getElementById('modal2').style.display = 'block';
+        }
+
+        function fecharModal2() {
+            document.getElementById('modal2').style.display = 'none';
+        }
+    </script>
+
+    <!--Terceiro modal-->
+    <dialog id="modal3" class="popup">
+        <h2>Pilates</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal3()">Fechar</button>
+        <a href="{% url 'lanch:vagas' pilates.id %}"><button type="submit" class="bt" onclick="alert('Aula confirmada')">Confirmar</button></a>
+    </dialog>
+    <script>
+        function abrirModal3() {
+            document.getElementById('modal3').style.display = 'block';
+        }
+
+        function fecharModal3() {
+            document.getElementById('modal3').style.display = 'none';
+        }
+    </script>
+
+    <!--Quarto modal-->
+    <dialog id="modal4" class="popup">
+        <h2>Jump</h2>
+        <p>Quer marcar essa aula?</p>
+        <button class="bt" onclick="fecharModal4()">Fechar</button>
+        <a href="{% url 'lanch:vagas' jump.id %}"><button type="submit" class="bt" onclick="alert('Aula confirmada')">Confirmar</button></a>
+    </dialog>
+    <script>
+        function abrirModal4() {
+            document.getElementById('modal4').style.display = 'block';
+        }
+
+        function fecharModal4() {
+            document.getElementById('modal4').style.display = 'none';
         }
     </script>
 </body>

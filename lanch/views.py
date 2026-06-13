@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404 # O get_object_or_404 pega um objeto do banco de dados ou da error 404 caso não ache 
 from django.http import HttpResponse
-from .models import Aulas, loja #Importando a tabela Aulas do banco de dados
+from .models import Aulas, loja #Importando o banco de dados
 from django.contrib.auth.models import User # é mais facil usar a model propria do django por conta verificação :)
 from django.contrib.auth import authenticate, login #essa bosta serve pra autenticação do usuário
 # Create your views here.
@@ -78,11 +78,22 @@ def home_admin_html(request):
     #verfica se o usuario é um superuser, ou seja, um admin
     if not request.user.is_superuser:
         return redirect("home")
+    
     return render(request, 'home/home-admin.html')
 
 # Views do Menu
 def admin_html(request):
-    return render(request, 'home/admin.html')
+    modalidades = Aulas.objects.all().order_by('-filas') #Isso serve para ordenar as modalidades, o traso(-) significa que é decrescente
+    modalidades = Aulas.objects.all().order_by('vagas') 
+    produtos = loja.objects.all()
+    fatura = 0
+    for produto in produtos:
+        fatura += produto.faturamento
+    context ={
+        'fatura': fatura,
+        'modalidades': modalidades,
+    }
+    return render(request, 'home/admin.html', context)
 
 def carrinho_html(request):
     carrinho = request.session.get('carrinho', [])  # pega o carrinho da sessão
@@ -93,7 +104,7 @@ def suplementos_html(request):
     produtos = loja.objects.all()
 
     context = {
-        'produtos': produtos
+        'produtos': produtos,
     }
     return render(request, 'loja/suplementos.html', context)
 
@@ -102,24 +113,24 @@ def equipamentos_html(request):
 
 #Pop ups
 def vagas(request, id):
-    fila = get_object_or_404(Aulas,id=id)
     modalidade = get_object_or_404(Aulas, id=id) # Se o id passado nos parametros for igual ao id que está no banco ele funciona, senao da erro 404
     if modalidade.vagas > 0: # Se nao tiver vagas vai pra fila
         modalidade.vagas -= 1
         modalidade.save() # Salva a alteração
-    #else:
-        #fila.filas += 1
-        #fila.save()
+    else:
+        fila = get_object_or_404(Aulas,id=id)
+        fila.filas += 1
+        fila.save()
     return redirect ('lanch:home')
 
 #Funcionalidades da loja
-def loja(request, id): # Meu Deus
+def loja_pag(request, id): # Meu Deus
     produto = get_object_or_404(loja,id=id)
     if produto.estoque >0:
         carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
 
         carrinho.append({ #Dicionario para colocar no html
-            'nome': produto.salgado,
+            'nome': produto.produtos,
             'preco': str(produto.preço), #Decimal nao funciona no sessions
         })
 
@@ -128,9 +139,9 @@ def loja(request, id): # Meu Deus
 
 #Botão de comprar
 def comprar(request):
-    carrinho = request.session.get('carrinho', [])
+    carrinho = request.session.get('carrinho', []) #Novamente o sessions
     for item in carrinho:
-        compra = get_object_or_404(loja, salgado=item['nome'])
+        compra = get_object_or_404(loja, produtos=item['nome']) #Por algum motivo o id não está funcionando, então usaremos o nome
         compra.estoque -=1
         compra.faturamento += compra.preço
         compra.save()
@@ -138,5 +149,5 @@ def comprar(request):
     return redirect ('lanch:carrinho')
 def limpar(request):
      carrinho = request.session.get('carrinho', [])
-     del request.session['carrinho']
+     del request.session['carrinho'] #Deleta o carrinho
      return redirect ('lanch:carrinho')

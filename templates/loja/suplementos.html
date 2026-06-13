@@ -25,7 +25,7 @@
     <form action="{% url 'lanch:loja' produto.id %}" method="POST" >
         {% csrf_token %}
         <div class="blocos">
-            <h2>{{produto.salgado}}</h2>
+            <h2>{{produto.produtos}}</h2>
             <a href="{% url 'lanch:loja' produto.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
     </form>

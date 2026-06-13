@@ -25,7 +25,9 @@
     <main class="container">
         <div class="blocos">
             <h1>Aula mais concorrida</h1>
-            <h2>"Variavel que ainda não existe"</h2>
+            {% for item in modalidades %}
+                <p>{{ item.modalidade }} Vagas {{item.vagas}} Fila {{ item.filas }}</p>
+            {% endfor %}
             <button type="button">Gerar relatório</button>
         </div>
         <div class="blocos">
@@ -37,8 +39,7 @@
         </div>
         <div class="blocos_3"> <!--Diferente para poder cobrir todo o espaço-->
             <h1>faturamento</h1>
-            <h2>"Variavel do faturamento"</h2>
-            <h2>"Grafico muito top"</h2>
+            <p>{{fatura}}</p>
         </div>
     </main>
 </body>
