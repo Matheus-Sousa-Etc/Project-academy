@@ -90,7 +90,7 @@ def carrinho_html(request):
 
 #Views da Loja
 def suplementos_html(request):
-    produtos = lanchonete.objects.all()
+    produtos = loja.objects.all()
 
     context = {
         'produtos': produtos
@@ -114,7 +114,7 @@ def vagas(request, id):
 
 #Funcionalidades da loja
 def loja(request, id): # Meu Deus
-    produto = get_object_or_404(lanchonete,id=id)
+    produto = get_object_or_404(loja,id=id)
     if produto.estoque >0:
         carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
 
@@ -130,7 +130,7 @@ def loja(request, id): # Meu Deus
 def comprar(request):
     carrinho = request.session.get('carrinho', [])
     for item in carrinho:
-        compra = get_object_or_404(lanchonete, salgado=item['nome'])
+        compra = get_object_or_404(loja, salgado=item['nome'])
         compra.estoque -=1
         compra.faturamento += compra.preço
         compra.save()
