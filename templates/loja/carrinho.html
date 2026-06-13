@@ -23,11 +23,18 @@
     <form action="" method="POST" class="container">
         {% csrf_token %}
         <h1>Carrinho</h1>
+        {% if carrinho %}
+            {% for produto in carrinho %}
+                <p>{{ produto.nome }}  R$ {{ produto.preco }}</p>
+            {% endfor %}
+        {% else %}
+            <p>Seu carrinho está vazio</p>
+        {% endif %}
         <div class="bt">
             <button type="reset">Limpar</button>
         </div>
             <div class="bt">
-            <button type="submit">Comprar</button>
+            <a href=""><button type="submit">Comprar</button></a>
         </div>
     </form>
 </body>

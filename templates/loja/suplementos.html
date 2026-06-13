@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'global.css' %}">
     <link rel="stylesheet" href="{% static 'equipamentos.css' %}">
     <link rel="stylesheet" href="{% static 'navbar.css' %}">
-    <title>Página Equipamentos</title>
+    <title>Página Suplementos</title>
 </head>
 <body>
     <nav>
@@ -21,7 +21,9 @@
         </ul>
     </nav>
     <!--dividido em 4 blocos-->
-    <form action="" method="POST" class="container">
+    {% for produto in produtos %}
+    <form action="{% url 'lanch:loja' produto.id %}" method="POST" class="container">
+    {% endfor %}
         {% csrf_token %}
         <div class="blocos">
             <h2>Whey</h2>
@@ -29,15 +31,15 @@
         </div>
         <div class="blocos">
             <h2>Creatina</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' creatina.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Hipercalórico</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' hipercalorico.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Pré-treino</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' preTreino.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
     </form>
 </body>

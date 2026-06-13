@@ -85,16 +85,29 @@ def admin_html(request):
     return render(request, 'home/admin.html')
 
 def carrinho_html(request):
-    return render(request, 'loja/carrinho.html')
+    carrinho = request.session.get('carrinho', [])  # pega o carrinho da sessão
+    return render(request, 'loja/carrinho.html', {'carrinho': carrinho})
 
 #Views da Loja
 def suplementos_html(request):
+    
     whey = lanchonete.objects.get(salgado = 'whey')
-    #creatina = lanchonete.objects.get(salgado = '')
-    #hipercalorico = lanchonete.objects.get(salgado = '')
-    #preTreino = lanchonete.objects.get(salgado = '')
+    creatina = lanchonete.objects.get(salgado = 'creatina')
+    hipercalorico = lanchonete.objects.get(salgado = 'hipercalorico')
+    preTreino = lanchonete.objects.get(salgado = 'preTreino')
+    strap = lanchonete.objects.get(salgado = 'strap')
+    luva = lanchonete.objects.get(salgado = 'luva')
+    cinto_lombar = lanchonete.objects.get(salgado = 'cinto lombar')
+    fones = lanchonete.objects.get(salgado = 'fones')
     context = {
-        'whey': whey
+        'whey': whey,
+        'creatina': creatina,
+        'hipercalorico': hipercalorico,
+        'preTreino': preTreino,
+        'strap': strap,
+        'luva': luva,
+        'cinto lombar': cinto_lombar,
+        'fones': fones
     }
     return render(request, 'loja/suplementos.html', context)
 
@@ -103,19 +116,34 @@ def equipamentos_html(request):
 
 #Pop ups
 def vagas(request, id):
+    fila = get_object_or_404(Aulas,id=id)
     modalidade = get_object_or_404(Aulas, id=id) # Se o id passado nos parametros for igual ao id que está no banco ele funciona, senao da erro 404
     if modalidade.vagas > 0: # Se nao tiver vagas vai pra fila
         modalidade.vagas -= 1
         modalidade.save() # Salva a alteração
     #else:
-        #fila += 1
+        #fila.filas += 1
+        #fila.save()
     return redirect ('lanch:home')
 
 #Funcionalidades da loja
-def loja(request, id): # Meu Deus 
-    suplemento = get_object_or_404(lanchonete,id=id)
-    if suplemento.estoque > 0:
-        suplemento.estoque -=1
-        suplemento.faturamento += suplemento.preço
-        suplemento.save()
+def loja(request, id): # Meu Deus
+    produto = get_object_or_404(lanchonete,id=id)
+    carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
+
+    carrinho.append({ #Dicionario para colocar no html
+        'nome': produto.salgado,
+        'preco': str(produto.preço), #Decimal nao funciona no sessions
+    })
+
+    request.session['carrinho'] = carrinho #Salva. O problema é que tudo some se limpar os cookies
     return redirect ('lanch:suplementos')
+
+#Botão de comprar
+def comprar(request, id):
+    compra = get_object_or_404(lanchonete,id=id)
+    if compra.estoque > 0:
+        compra.estoque -=1
+        compra.faturamento += compra.preço
+        compra.save()
+    return redirect ('lanch:carrinho')

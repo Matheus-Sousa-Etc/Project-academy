@@ -21,23 +21,25 @@
         </ul>
     </nav>
     <!--Equipamentos divididos em 4 blocos-->
-    <form action="" method="POST" class="container">
+    {% for produto in produtos %}
+    <form action="{% url 'lanch:loja' produto.id %}" method="POST" class="container">
+    {% endfor %}
         {% csrf_token %}
         <div class="blocos">
             <h2>Strap</h2>
-            <button class="bt" name="bt-equip">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' strap.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Luva</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' luva.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Cinto Lombar</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' cinto_lombar.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
         <div class="blocos">
             <h2>Fones</h2>
-            <button class="bt">Adicionar ao carrinho</button>
+            <a href="{% url 'lanch:loja' fones.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
     </form>
 </body>
