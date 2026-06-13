@@ -20,27 +20,16 @@
             <li><a href="{% url 'lanch:carrinho' %}"><i class="fa-solid fa-cart-shopping fa-2x"></i></a></li>
         </ul>
     </nav>
-    <!--dividido em 4 blocos-->
+    <main class="container">
     {% for produto in produtos %}
-    <form action="{% url 'lanch:loja' produto.id %}" method="POST" class="container">
-    {% endfor %}
+    <form action="{% url 'lanch:loja' produto.id %}" method="POST" >
         {% csrf_token %}
         <div class="blocos">
-            <h2>Whey</h2>
-            <a href="{% url 'lanch:loja' whey.id %}"><button class="bt">Adicionar ao carrinho</button></a>
-        </div>
-        <div class="blocos">
-            <h2>Creatina</h2>
-            <a href="{% url 'lanch:loja' creatina.id %}"><button class="bt">Adicionar ao carrinho</button></a>
-        </div>
-        <div class="blocos">
-            <h2>Hipercalórico</h2>
-            <a href="{% url 'lanch:loja' hipercalorico.id %}"><button class="bt">Adicionar ao carrinho</button></a>
-        </div>
-        <div class="blocos">
-            <h2>Pré-treino</h2>
-            <a href="{% url 'lanch:loja' preTreino.id %}"><button class="bt">Adicionar ao carrinho</button></a>
+            <h2>{{produto.salgado}}</h2>
+            <a href="{% url 'lanch:loja' produto.id %}"><button class="bt">Adicionar ao carrinho</button></a>
         </div>
     </form>
+    {% endfor %}
+    </main>
 </body>
 </html>

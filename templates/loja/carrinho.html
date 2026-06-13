@@ -20,22 +20,20 @@
             <li><a href="{% url 'lanch:carrinho' %}"><i class="fa-solid fa-cart-shopping fa-2x"></i></a></li>
         </ul>
     </nav>
-    <form action="" method="POST" class="container">
-        {% csrf_token %}
-        <h1>Carrinho</h1>
+    <main class="container">
         {% if carrinho %}
             {% for produto in carrinho %}
                 <p>{{ produto.nome }}  R$ {{ produto.preco }}</p>
             {% endfor %}
-        {% else %}
-            <p>Seu carrinho está vazio</p>
-        {% endif %}
-        <div class="bt">
-            <button type="reset">Limpar</button>
-        </div>
             <div class="bt">
-            <a href=""><button type="submit">Comprar</button></a>
-        </div>
-    </form>
+                <a href="{% url 'lanch:limpar' %}"><button type="reset">Limpar</button></a>
+            </div>
+            <div class="bt">
+                <a href="{% url 'lanch:comprar' %}"><button type="submit">Comprar</button></a>
+            </div>
+        {% else %}
+            <h1>Seu carrinho está vazio</h1>
+        {% endif %}
+    </main>
 </body>
 </html>

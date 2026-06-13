@@ -90,24 +90,10 @@ def carrinho_html(request):
 
 #Views da Loja
 def suplementos_html(request):
-    
-    whey = lanchonete.objects.get(salgado = 'whey')
-    creatina = lanchonete.objects.get(salgado = 'creatina')
-    hipercalorico = lanchonete.objects.get(salgado = 'hipercalorico')
-    preTreino = lanchonete.objects.get(salgado = 'preTreino')
-    strap = lanchonete.objects.get(salgado = 'strap')
-    luva = lanchonete.objects.get(salgado = 'luva')
-    cinto_lombar = lanchonete.objects.get(salgado = 'cinto lombar')
-    fones = lanchonete.objects.get(salgado = 'fones')
+    produtos = lanchonete.objects.all()
+
     context = {
-        'whey': whey,
-        'creatina': creatina,
-        'hipercalorico': hipercalorico,
-        'preTreino': preTreino,
-        'strap': strap,
-        'luva': luva,
-        'cinto lombar': cinto_lombar,
-        'fones': fones
+        'produtos': produtos
     }
     return render(request, 'loja/suplementos.html', context)
 
@@ -129,21 +115,28 @@ def vagas(request, id):
 #Funcionalidades da loja
 def loja(request, id): # Meu Deus
     produto = get_object_or_404(lanchonete,id=id)
-    carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
+    if produto.estoque >0:
+        carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
 
-    carrinho.append({ #Dicionario para colocar no html
-        'nome': produto.salgado,
-        'preco': str(produto.preço), #Decimal nao funciona no sessions
-    })
+        carrinho.append({ #Dicionario para colocar no html
+            'nome': produto.salgado,
+            'preco': str(produto.preço), #Decimal nao funciona no sessions
+        })
 
-    request.session['carrinho'] = carrinho #Salva. O problema é que tudo some se limpar os cookies
+        request.session['carrinho'] = carrinho #Salva. O problema é que tudo some se limpar os cookies
     return redirect ('lanch:suplementos')
 
 #Botão de comprar
-def comprar(request, id):
-    compra = get_object_or_404(lanchonete,id=id)
-    if compra.estoque > 0:
+def comprar(request):
+    carrinho = request.session.get('carrinho', [])
+    for item in carrinho:
+        compra = get_object_or_404(lanchonete, salgado=item['nome'])
         compra.estoque -=1
         compra.faturamento += compra.preço
         compra.save()
+    del request.session['carrinho']
     return redirect ('lanch:carrinho')
+def limpar(request):
+     carrinho = request.session.get('carrinho', [])
+     del request.session['carrinho']
+     return redirect ('lanch:carrinho')
