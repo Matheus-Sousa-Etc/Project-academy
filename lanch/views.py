@@ -46,14 +46,14 @@ def cadastro_html(request):
 
 def login_admin_html(request):
     if request.method == "GET":
-        return render(request, 'login/login.html')
+        return render(request, 'login/login-admin.html')
     else:
         #pega as informações do banco de dados para a autenticação
         username = request.POST.get('email')
         senha = request.POST.get('senha')
 
         user = authenticate(username=username, password=senha)#autenticação do usuario usando tag propria do django
-
+        
         if user and user.is_superuser:
             login(request, user)
             return redirect ('lanch:home-admin') #caso o usuario logue e seja autenticado, vai para a pagina home
