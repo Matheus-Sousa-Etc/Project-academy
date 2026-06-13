@@ -54,11 +54,11 @@ def login_admin_html(request):
 
         user = authenticate(username=username, password=senha)#autenticação do usuario usando tag propria do django
 
-        if user:
+        if user and user.is_superuser:
             login(request, user)
-            return redirect ('lanch:home') #caso o usuario logue e seja autenticado, vai para a pagina home
+            return redirect ('lanch:home-admin') #caso o usuario logue e seja autenticado, vai para a pagina home
         else:
-            return HttpResponse("erro de login") #erro no login
+            return HttpResponse("erro de login, apenas adm possuem acesso") #erro no login
 
 def home_html(request):
     musculacao = Aulas.objects.get(modalidade='musculação') #Pega o objeto musculação do banco, armazena em musculacao.
@@ -75,6 +75,9 @@ def home_html(request):
     return render(request, 'home/home.html' ,contexto)
 
 def home_admin_html(request):
+    #verfica se o usuario é um superuser, ou seja, um admin
+    if not request.user.is_superuser:
+        return redirect("home")
     return render(request, 'home/home-admin.html')
 
 # Views do Menu

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13-Jun-2026 às 03:08
+-- Tempo de geração: 13-Jun-2026 às 04:03
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -293,6 +293,16 @@ CREATE TABLE `lanch_aulas` (
   `vagas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Extraindo dados da tabela `lanch_aulas`
+--
+
+INSERT INTO `lanch_aulas` (`id`, `modalidade`, `vagas`) VALUES
+(1, 'musculação', 15),
+(2, 'crossfit', 15),
+(3, 'pilates', 15),
+(4, 'jump', 15);
+
 -- --------------------------------------------------------
 
 --
@@ -490,7 +500,7 @@ ALTER TABLE `lanch_admin`
 -- AUTO_INCREMENT de tabela `lanch_aulas`
 --
 ALTER TABLE `lanch_aulas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `lanch_lanchonete`
