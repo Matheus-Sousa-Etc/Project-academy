@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08-Jun-2026 às 07:39
+-- Tempo de geração: 13-Jun-2026 às 03:08
 -- Versão do servidor: 10.4.32-MariaDB
 -- versão do PHP: 8.0.30
 
@@ -135,7 +135,9 @@ INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `userna
 (5, 'pbkdf2_sha256$600000$U8KXA36MfCA6xRvZ7Qy5N4$EX07LrD4t7pv2QGHhljDmieWZ+WxqrMIqHxismPs0UU=', NULL, 0, 'c@gmail.com', '', '', '', 0, 1, '2026-06-08 05:17:27.951910'),
 (6, 'pbkdf2_sha256$600000$kft9lmzmgY4uyAvYxEsdGk$2UB8H4bnR1xDFI1O9y1q1D0FBtKl5/PFJ7Kxy9PyAaE=', '2026-06-08 05:29:39.616252', 0, 'd@gmail.com', '', '', '', 0, 1, '2026-06-08 05:18:57.579748'),
 (7, 'pbkdf2_sha256$600000$dorBht1P0aBZ5NcrKYJTdR$ujSRu+GURrssLfy4zsEkVmbZx2YDMRy8OgbB7XwGKfw=', NULL, 0, 'w@gmail.com', '', '', '', 0, 1, '2026-06-08 05:30:14.249718'),
-(8, 'pbkdf2_sha256$600000$oL4UsxkwUCrrUca7CLp5cK$0fbzYItMKptxVx2PeKF54RtTW2HnwNl2qKQ/PizxlzY=', '2026-06-08 05:37:57.034008', 0, 'afonso@gmail.com', '', '', '', 0, 1, '2026-06-08 05:37:25.160791');
+(8, 'pbkdf2_sha256$600000$oL4UsxkwUCrrUca7CLp5cK$0fbzYItMKptxVx2PeKF54RtTW2HnwNl2qKQ/PizxlzY=', '2026-06-08 05:37:57.034008', 0, 'afonso@gmail.com', '', '', '', 0, 1, '2026-06-08 05:37:25.160791'),
+(9, 'pbkdf2_sha256$600000$FcPmv8kd5w72QdIS5SMDST$u12EK1FLqUm1Gj6262aRFLcb09dws00Imlz26sc2kZY=', NULL, 0, 'hkopt@gmail.com', '', '', '', 0, 1, '2026-06-08 22:17:50.900067'),
+(10, 'pbkdf2_sha256$600000$9IWgEi1y6sKgODDbfQZbUL$AXppUov+yRSTL8FRWVTRKZ/ALiVUnoPvcRKMqAcgA+g=', '2026-06-10 00:18:03.834458', 0, 'qwerty@gmail.com', '', '', '', 0, 1, '2026-06-10 00:17:29.119294');
 
 -- --------------------------------------------------------
 
@@ -242,7 +244,8 @@ INSERT INTO `django_migrations` (`id`, `app`, `name`, `applied`) VALUES
 (16, 'auth', '0011_update_proxy_permissions', '2026-06-08 04:29:32.445339'),
 (17, 'auth', '0012_alter_user_first_name_max_length', '2026-06-08 04:29:32.454317'),
 (18, 'lanch', '0001_initial', '2026-06-08 04:29:32.480023'),
-(19, 'sessions', '0001_initial', '2026-06-08 04:29:32.501543');
+(19, 'sessions', '0001_initial', '2026-06-08 04:29:32.501543'),
+(20, 'lanch', '0002_alter_lanchonete_estoque_alter_lanchonete_preço', '2026-06-13 01:07:08.511974');
 
 -- --------------------------------------------------------
 
@@ -261,8 +264,8 @@ CREATE TABLE `django_session` (
 --
 
 INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('2etmkhmxckle7amg2y3ijlh5vfxbgviy', '.eJxVjMsOwiAQAP9lz4awIA979O43EJYFqRpISnsy_rtp0oNeZybzhhC3tYZt5CXMDBN4OP0yiumZ2y74Edu9i9Tbuswk9kQcdohb5_y6Hu3foMZRYYILMrI8o2N0RVM2TstSrEMtpVPM0pPVCTWlFBm9IlWM8aisLa54TfD5AtCnN2k:1wWSgP:P5XLBmciDxq6UqFFBQ5XghllCuFadFTpFE5blGSCcIQ', '2026-06-22 05:37:57.036521'),
-('98pgefl1z9fwrscru7xrphinswyhad36', 'e30:1wWSVF:mRIKqciyT6zUj_p5KyfCSnlxgJWiZaNpJPJHeV0LeyU', '2026-06-22 05:26:25.276177');
+('98pgefl1z9fwrscru7xrphinswyhad36', 'e30:1wWSVF:mRIKqciyT6zUj_p5KyfCSnlxgJWiZaNpJPJHeV0LeyU', '2026-06-22 05:26:25.276177'),
+('ae6gthm6hd8pzmzfsas12kbv6mau3jyw', '.eJxVjEsOwiAUAO_y1obwKb8u3XsG8uCBVA0kpV0Z726adKHbmcm8IeC-1bCPvIaFYAbB4fILI6ZnboehB7Z7Z6m3bV0iOxJ22sFunfLrerZ_g4qjwgyTICu8IYlaG6O8sbY4r1E4XzxlEZWVXKHjypbideTIk44UjSppcrLA5wvd2DeJ:1wX6dv:ET83iSvTxDzMCllUK3E8wKGW59CFQYFnpCpjqM9Qa8Q', '2026-06-24 00:18:03.854323');
 
 -- --------------------------------------------------------
 
@@ -299,8 +302,8 @@ CREATE TABLE `lanch_aulas` (
 CREATE TABLE `lanch_lanchonete` (
   `id` int(11) NOT NULL,
   `salgado` varchar(15) NOT NULL,
-  `preço` varchar(10) NOT NULL,
-  `estoque` varchar(100) NOT NULL,
+  `preço` int(11) NOT NULL,
+  `estoque` int(11) NOT NULL,
   `faturamento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -445,7 +448,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT de tabela `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `auth_user_groups`
@@ -475,7 +478,7 @@ ALTER TABLE `django_content_type`
 -- AUTO_INCREMENT de tabela `django_migrations`
 --
 ALTER TABLE `django_migrations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `lanch_admin`

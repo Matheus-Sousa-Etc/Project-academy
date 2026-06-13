@@ -14,12 +14,13 @@ class admin(models.Model):
 class Aulas(models.Model):
  modalidade = models.CharField(max_length=30)
  vagas = models.IntegerField(max_length=2)
+ filas = models.IntegerField
 
 
 class lanchonete(models.Model):
   salgado = models.CharField(max_length=15)
-  preço = models.CharField(max_length=10)
-  estoque = models.CharField(max_length=100)
+  preço = models.IntegerField(max_length=10)
+  estoque = models.IntegerField(max_length=100)
   faturamento = models.IntegerField(max_length=256)
  
 class User(models.Model):
