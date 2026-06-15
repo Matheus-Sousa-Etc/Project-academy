@@ -126,7 +126,7 @@ def vagas(request, id):
 #Funcionalidades da loja
 def loja_pag(request, id): # Meu Deus
     produto = get_object_or_404(loja,id=id)
-    if produto.estoque >0:
+    if produto.estoque > 0:
         carrinho = request.session.get('carrinho', []) #Sessoes do django (fica nos cookies), a variavel consta por sessão.
 
         carrinho.append({ #Dicionario para colocar no html

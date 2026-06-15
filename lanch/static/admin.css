@@ -12,8 +12,6 @@ a:hover{
 .container{
     min-height: 85vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 40% 1fr;
     color: #fff;
 }
 .blocos{

@@ -26,20 +26,13 @@
         <div class="blocos">
             <h1>Aula mais concorrida</h1>
             {% for item in modalidades %}
-                <p>{{ item.modalidade }} Vagas {{item.vagas}} Fila {{ item.filas }}</p>
+                <h3>{{ item.modalidade }} Vagas {{item.vagas}} Fila {{ item.filas }}</h3>
             {% endfor %}
             <button type="button">Gerar relatório</button>
         </div>
-        <div class="blocos">
-            <h1>fila</h1>
-            <h2>"Variavel da fila mais concorrida"</h2>
-            <h2>"Variavel da fila"</h2>
-            <h2>"Variavel da fila"</h2>
-            <h2>"Variavel da fila"</h2>
-        </div>
-        <div class="blocos_3"> <!--Diferente para poder cobrir todo o espaço-->
+        <div class="blocos"> <!--Diferente para poder cobrir todo o espaço-->
             <h1>faturamento</h1>
-            <p>{{fatura}}</p>
+            <h2>R$ {{fatura}}</h2>
         </div>
     </main>
 </body>
