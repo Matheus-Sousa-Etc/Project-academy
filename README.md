@@ -1,4 +1,4 @@
-## Academy booking e loja integrada
+## Gym class booking e loja integrada
 A ideia desse projeto consiste em ser um site onde os clientes poderão se inscrever em aulas de diversas modalidades e também realizarem compras na loja integrada do site.
 
 ## Sobre o projeto
