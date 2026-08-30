@@ -28,5 +28,10 @@ O sistema contém funcionalidades como agendamento de aulas, compra de produtos 
     Após o repositório ser clonado e sido instalado os requisitos, execute no terminal:
     - python -m venv venv 
     - venv\Scripts\activate 
+    - pip install pymysql 
     - python manage.py migrate
     - python manage.py runserver
+
+    ## Projeto acadêmico
+   O projeto foi feito em ambiente acadêmico de forma coletiva e NÃO está finalizado até o momento. 
+    
