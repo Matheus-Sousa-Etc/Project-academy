@@ -1,9 +1,12 @@
+
 ## Gym class booking e loja integrada
 A ideia desse projeto consiste em ser um site onde os clientes poderão se inscrever em aulas de diversas modalidades e também realizarem compras na loja integrada do site.
 
 ## Sobre o projeto
 O projeto foi desenvolvido em dupla com o objetivo de realizar um sistema que seja capaz de lidar com agendamentos de aulas limitadas e também consiga manter uma loja de venda de suplementos e acessórios de academia.
 O sistema contém funcionalidades como agendamento de aulas, compra de produtos e visualização de dados relacionados a aulas e alunos.
+
+<img width="959" height="437" alt="Captura de tela 2026-08-30 142009" src="https://github.com/user-attachments/assets/113b44bd-3a07-4751-8a1d-f585b4dbfc5f" />
 
 ## Funcionalidades
 
